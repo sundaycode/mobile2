@@ -19,7 +19,7 @@ public class cCommentarPost extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_commentar_post);
 
-        listview = (ListView)findViewById(R.id.listkomentar);
+        listview = (ListView)findViewById(R.id.listComment);
         nama = getResources().getStringArray(R.array.nama_komentator);
         isi = getResources().getStringArray(R.array.isi_komentar);
         int i=0;

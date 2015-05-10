@@ -8,21 +8,28 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="Fear of losing what is dearest"
+        android:text="Title"
         android:id="@+id/textView14" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Categories"
+        android:id="@+id/textView" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:text="When bad thing happen in life"
-        android:id="@+id/textView16" />
+        android:text="Content"
+        android:id="@+id/tContentPost" />
 
     <ListView
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:id="@+id/listkomentar"
+        android:id="@+id/listComment"
         android:layout_gravity="center_horizontal" />
 </LinearLayout>

@@ -34,8 +34,6 @@ public class cListReliever extends ActionBarActivity {
             title = extras.getStringArray("title");
             isi = extras.getStringArray("isi");
         }
-//        title = getResources().getStringArray(R.array.judul_post);
-//        isi = getResources().getStringArray(R.array.isi_post);
 
         int i=0;
         adapter = new PostAdapter(getApplicationContext(), R.layout.post);

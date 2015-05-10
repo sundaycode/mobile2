@@ -27,7 +27,7 @@ public class cLogin extends ActionBarActivity {
         go2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(cLogin.this, cListPost.class);
+                Intent i = new Intent(cLogin.this, cSubmitPost.class);
                 startActivity(i);
             }
         });
