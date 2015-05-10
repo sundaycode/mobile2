@@ -24,6 +24,7 @@ public class cWelcome extends ActionBarActivity {
                 startActivity(i);
             }
         });
+        System.out.println("haloo");
     }
 
     @Override
