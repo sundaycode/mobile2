@@ -1,0 +1,57 @@
+<resources>
+    <string name="app_name">Apps1</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_activity1">activity1</string>
+    <string name="title_activity_activity2">activity2</string>
+    <string name="title_activity_activity3">activity3</string>
+    
+    <string-array name="nama_reliever">
+        <item>Rio</item>
+        <item>Ramadhan</item>
+        <item>Dharmawan</item>
+        <item>Maharani</item>
+    </string-array>
+
+    <string-array name="isi_pesan">
+        <item>Saya begini</item>
+        <item>Saya begitu</item>
+        <item>Saya tidak begini</item>
+        <item>Saya tidak begitu</item>
+    </string-array>
+
+    <string-array name="nama_komentator">
+        <item>Rio</item>
+        <item>Aji</item>
+        <item>Rio</item>
+        <item>Aji</item>
+        <item>Rio</item>
+        <item>Aji</item>
+    </string-array>
+
+    <string-array name="isi_komentar">
+        <item>Saya mengerti perasaan</item>
+        <item>Bisa anda memeberikan solusi</item>
+        <item>Saya rasa anda harus begini</item>
+        <item>Tapi begini</item>
+        <item>Saran saya yang bisa anda lakukan</item>
+        <item>Terima kasih</item>
+    </string-array>
+
+    <string-array name="judul_post">
+        <item>Fear in the dark</item>
+        <item>Love without you</item>
+        <item>2 years ago</item>
+    </string-array>
+
+    <string-array name="isi_post">
+        <item>I scary in my home</item>
+        <item>You always in</item>
+        <item>My thraumatic is begin</item>
+    </string-array>
+
+    <string name="title_activity_activity4">activity4</string>
+    <string name="title_activity_activity5">activity5</string>
+    <string name="title_activity_activity6">activity6</string>
+</resources>

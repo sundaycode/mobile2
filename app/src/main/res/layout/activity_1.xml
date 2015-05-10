@@ -1,0 +1,95 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#17ccdd">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_margin="30dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Login"
+            android:id="@+id/textView4"
+            android:layout_marginTop="131dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Chose your account"
+            android:id="@+id/textView5"
+            android:layout_below="@+id/textView4"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login as user"
+            android:id="@+id/button2"
+            android:layout_marginTop="38dp"
+            android:layout_gravity="center"
+            android:layout_below="@+id/textView5"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentEnd="false"
+            android:layout_alignParentStart="false" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="You&apos;re completely anonymous, don&apos;t be shy to tell your personal problem"
+            android:id="@+id/textView6"
+            android:layout_below="@+id/button2"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_alignParentEnd="true"
+            android:textAlignment="center" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Login as reliever"
+            android:id="@+id/button3"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/textView6"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Support another people as reliever and get your wisdom point"
+            android:id="@+id/textView7"
+            android:gravity="center"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_below="@+id/button3"
+            android:layout_alignParentStart="true"
+            android:textAlignment="center"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="What&apos;s is user and reliever?"
+            android:id="@+id/textView8"
+            android:layout_gravity="center"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"/>
+    </LinearLayout>
+</RelativeLayout>
