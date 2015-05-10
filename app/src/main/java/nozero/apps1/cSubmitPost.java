@@ -1,7 +1,6 @@
 package nozero.apps1;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,12 +8,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 
-public class activity2 extends ActionBarActivity {
+public class cSubmitPost extends ActionBarActivity {
 
     public static ArrayList<Post> posting;
     String[] title = new String[0];
@@ -24,12 +22,12 @@ public class activity2 extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_2);
+        setContentView(R.layout.aSubmitPost);
 
         title = getResources().getStringArray(R.array.judul_post);
         isi = getResources().getStringArray(R.array.isi_post);
 
-        Button go = (Button) findViewById(R.id.button4);
+        Button go = (Button) findViewById(R.id.bSubmitPost);
 
         go.setOnClickListener(new View.OnClickListener(){
             public void onClick(View v){
@@ -44,7 +42,7 @@ public class activity2 extends ActionBarActivity {
                 isi = addArray(x, e2.getText().toString());
                 x = null;
 
-                Intent i = new Intent(activity2.this, activity6.class);
+                Intent i = new Intent(cSubmitPost.this, cListReliever.class);
                 i.putExtra("title", title);
                 i.putExtra("isi", isi);
                 startActivity(i);

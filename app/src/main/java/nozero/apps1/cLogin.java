@@ -1,42 +1,42 @@
 package nozero.apps1;
 
+import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.ListView;
+import android.view.View;
+import android.widget.Button;
 
 
-public class activity5 extends ActionBarActivity {
-
-    ListView listview;
-    String[] nama;
-    String[] isi;
-    CommentAdapter adapter;
+public class cLogin extends ActionBarActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_5);
+        setContentView(R.layout.aLogin);
 
-        listview = (ListView)findViewById(R.id.listkomentar);
-        nama = getResources().getStringArray(R.array.nama_komentator);
-        isi = getResources().getStringArray(R.array.isi_komentar);
-        int i=0;
-        adapter = new CommentAdapter(getApplicationContext(), R.layout.comment);
-        listview.setAdapter(adapter);
-        for(String relieve : nama){
-            CommentProvider pesan = new CommentProvider(nama[i], isi[i]);
-            adapter.add(pesan);
-            i++;
-        }
+//        Button go1 = (Button) findViewById(R.id.button3);
+//        go1.setOnClickListener(new View.OnClickListener(){
+//            public void onClick(View v){
+//                Intent i = new Intent(cLogin.this, cListReliever.class);
+//                startActivity(i);
+//            }
+//        });
+        Button go2 = (Button) findViewById(R.id.bUserLogin);
+        go2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(cLogin.this, cListPost.class);
+                startActivity(i);
+            }
+        });
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_activity5, menu);
+        getMenuInflater().inflate(R.menu.menu_activity1, menu);
         return true;
     }
 

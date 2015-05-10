@@ -3,11 +3,11 @@ package nozero.apps1;
 /**
  * Created by Ramadhanario on 26/04/2015.
  */
-public class MessageProvider {
+public class RelieverProvider {
     private String nama;
     private String isi;
 
-    public MessageProvider(String nama, String isi){
+    public RelieverProvider(String nama, String isi){
         this.setNama(nama);
         this.setIsi(isi);
     }

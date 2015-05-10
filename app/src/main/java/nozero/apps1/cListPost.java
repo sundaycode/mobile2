@@ -1,7 +1,6 @@
 package nozero.apps1;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -9,30 +8,29 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 
-public class activity3 extends ActionBarActivity implements View.OnClickListener {
+public class cListPost extends ActionBarActivity implements View.OnClickListener {
 
     ListView listview;
     String[] nama = new String[0];
     String[] isi = new String[0];
-    MessageAdapter adapter;
+    RelieverAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_3);
+        setContentView(R.layout.aListPost);
 
         listview = (ListView)findViewById(R.id.list_View);
         nama = getResources().getStringArray(R.array.nama_reliever);
         isi = getResources().getStringArray(R.array.isi_pesan);
 
         int i=0;
-        adapter = new MessageAdapter(getApplicationContext(), R.layout.message);
+        adapter = new RelieverAdapter(getApplicationContext(), R.layout.reliever);
         listview.setAdapter(adapter);
         for(String relieve : nama){
-            MessageProvider pesan = new MessageProvider(nama[i], isi[i]);
+            RelieverProvider pesan = new RelieverProvider(nama[i], isi[i]);
             adapter.add(pesan);
             i++;
         }
@@ -40,7 +38,7 @@ public class activity3 extends ActionBarActivity implements View.OnClickListener
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent x = new Intent(activity3.this, activity2.class);
+                Intent x = new Intent(cListPost.this, cSubmitPost.class);
                 startActivity(x);
             }
         });
@@ -48,7 +46,7 @@ public class activity3 extends ActionBarActivity implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
-//        Intent i = new Intent(activity3.this, activity2.class);
+//        Intent i = new Intent(cListPost.this, cSubmitPost.class);
 //        startActivity(i);
     }
 

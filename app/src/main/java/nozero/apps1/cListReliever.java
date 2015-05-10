@@ -12,7 +12,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 
-public class activity6 extends ActionBarActivity {
+public class cListReliever extends ActionBarActivity {
 
     ListView listview;
     String[] title;
@@ -25,7 +25,7 @@ public class activity6 extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_6);
+        setContentView(R.layout.aListReliever);
 
         listview = (ListView)findViewById(R.id.list_v);
         Bundle extras = getIntent().getExtras();
@@ -49,7 +49,7 @@ public class activity6 extends ActionBarActivity {
         listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent x = new Intent(activity6.this, activity2.class);
+                Intent x = new Intent(cListReliever.this, cSubmitPost.class);
                 startActivity(x);
             }
         });

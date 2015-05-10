@@ -13,10 +13,10 @@ import java.util.List;
 /**
  * Created by Ramadhanario on 26/04/2015.
  */
-public class MessageAdapter extends ArrayAdapter{
+public class RelieverAdapter extends ArrayAdapter{
     List list = new ArrayList();
 
-    public MessageAdapter(Context context, int resource) {
+    public RelieverAdapter(Context context, int resource) {
         super(context, resource);
     }
 
@@ -47,7 +47,7 @@ public class MessageAdapter extends ArrayAdapter{
         DataHandler handler;
         if(convertView==null){
             LayoutInflater inflater = (LayoutInflater)this.getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            row = inflater.inflate(R.layout.message, parent, false);
+            row = inflater.inflate(R.layout.reliever, parent, false);
             handler = new DataHandler();
             handler.name = (TextView)row.findViewById(R.id.textView9);
             handler.content = (TextView)row.findViewById(R.id._message);
@@ -57,8 +57,8 @@ public class MessageAdapter extends ArrayAdapter{
             handler = (DataHandler) row.getTag();
         }
 
-        MessageProvider pesan;
-        pesan = (MessageProvider)this.getItem(position);
+        RelieverProvider pesan;
+        pesan = (RelieverProvider)this.getItem(position);
         handler.name.setText(pesan.getNama());
         handler.content.setText(pesan.getIsi());
 

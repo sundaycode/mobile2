@@ -6,7 +6,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/eTitlePost"
         android:layout_alignParentStart="true"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
@@ -18,13 +18,13 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2"
-        android:layout_below="@+id/editText"
+        android:id="@+id/eCategoriesPost"
+        android:layout_below="@+id/eTitlePost"
         android:layout_marginTop="20dp"
-        android:layout_alignStart="@+id/editText"
+        android:layout_alignStart="@+id/eTitlePost"
         android:layout_alignParentStart="false"
         android:hint="Categories"
-        android:layout_alignEnd="@+id/editText"
+        android:layout_alignEnd="@+id/eTitlePost"
         android:editable="true" />
 
     <EditText
@@ -33,13 +33,13 @@
         android:inputType="textMultiLine"
         android:ems="10"
         android:gravity="start"
-        android:id="@+id/editText3"
+        android:id="@+id/eContentPost"
         android:layout_centerVertical="true"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/eCategoriesPost"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="100dp"
-        android:layout_alignStart="@+id/editText2"
-        android:layout_alignEnd="@+id/editText2"
+        android:layout_alignStart="@+id/eCategoriesPost"
+        android:layout_alignEnd="@+id/eCategoriesPost"
         android:hint="Tell your personal problem here"
         android:editable="true" />
 
@@ -47,7 +47,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Submit"
-        android:id="@+id/button4"
+        android:id="@+id/bSubmitPost"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="35dp" />
