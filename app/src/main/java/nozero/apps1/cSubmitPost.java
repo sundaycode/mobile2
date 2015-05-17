@@ -3,6 +3,7 @@ package nozero.apps1;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -62,33 +63,41 @@ public class cSubmitPost extends ActionBarActivity {
                 i.putExtra("isi", isi);
                 startActivity(i);
 
+//                HashMap tes = new HashMap();
+//                tes.put(new String("post_user_id"),"1");
+//                tes.put(new String("post_psikolog_id"),"1");
+//                tes.put(new String("post_title"),title[0]);
+//                tes.put(new String("post_category"),"testes");
+//                tes.put(new String("post_content"),isi[0]);
+//                tes.put(new String("post_image_url"),"1234");
+
                 HashMap tes = new HashMap();
-                tes.put(new String("post_user_id"),"1");
-                tes.put(new String("post_psikolog_id"),"1");
-                tes.put(new String("post_title"),title[0]);
-                tes.put(new String("post_category"),"testes");
-                tes.put(new String("post_content"),isi[0]);
-                tes.put(new String("post_image_url"),"1234");
-                try {
-//                    makeRequest("http://relieve-endpoint.herokuapp.com/v0/posts",tes);
-                    HttpClient httpClient = new DefaultHttpClient();
-                    HttpPost httpPost = new HttpPost("http://relieve-endpoint.herokuapp.com/v0/posts");
-                    JSONObject holder = getJsonObjectFromMap(tes);
+                tes.put(new String("user_email"),"1");
+                tes.put(new String("user_gender"),"1");
+                tes.put(new String("user_age"),"17");
+                tes.put(new String("user_profession"),"testes");
 
-                    //passes the results to a string builder/entity
-                    StringEntity se = new StringEntity(holder.toString());
 
-                    //sets the post request as the resulting string
-                    httpPost.setEntity(se);
-                    //sets a request header so the page receving the request
-                    //will know what to do with it
-                    httpPost.setHeader("Accept", "application/json");
-                    httpPost.setHeader("Content-type", "application/json");
-                    HttpResponse response = httpClient.execute(httpPost);
-
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+//                try {
+////                    makeRequest("http://relieve-endpoint.herokuapp.com/v0/posts",tes);
+//                    HttpClient httpClient = new DefaultHttpClient();
+//                    HttpPost httpPost = new HttpPost("http://relieve-endpoint.herokuapp.com/v0/users");
+//                    JSONObject holder = getJsonObjectFromMap(tes);
+//
+//                    //passes the results to a string builder/entity
+//                    StringEntity se = new StringEntity(holder.toString());
+//
+//                    //sets the post request as the resulting string
+//                    httpPost.setEntity(se);
+//                    //sets a request header so the page receving the request
+//                    //will know what to do with it
+//                    httpPost.setHeader("Accept", "application/json");
+//                    httpPost.setHeader("Content-type", "application/json");
+//                    HttpResponse response = httpClient.execute(httpPost);
+//
+//                } catch (Exception e) {
+//                    Log.d("error", "error :"+e);
+//                }
             }
         });
     }
