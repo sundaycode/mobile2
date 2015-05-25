@@ -1,92 +1,133 @@
 package nozero.apps1;
 
-import android.os.AsyncTask;
-import android.util.Log;
+/**
+ * Created by F on 5/25/2015.
+ */
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.List;
 
 import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-
-/**
- * Created by Ramadhanario on 10/05/2015.
- */
 public class Bridge extends AsyncTask<String, Void, String> {
-
-    private static JSONObject getJsonObjectFromMap(Map params) throws JSONException {
-
-        //all the passed parameters from the post request
-        //iterator used to loop through all the parameters
-        //passed in the post request
-        Iterator iter = params.entrySet().iterator();
-
-        //Stores JSON
-        JSONObject holder = new JSONObject();
-
-        //using the earlier example your first entry would get email
-        //and the inner while would get the value which would be 'foo@bar.com'
-        //{ fan: { email : 'foo@bar.com' } }
-
-        //While there is another entry
-        while (iter.hasNext())
-        {
-            //gets an entry in the params
-            Map.Entry pairs = (Map.Entry)iter.next();
-
-            //creates a key for Map
-            String key = (String)pairs.getKey();
-
-            //Create a new map
-            String m = (String) pairs.getValue();
-
-            //object for storing Json
-//            JSONObject data = new JSONObject();
-
-            //gets the value
-//            Iterator iter2 = m.entrySet().iterator();
-//            while (iter2.hasNext())
-//            {
-//                Map.Entry pairs2 = (Map.Entry)iter2.next();
-//                data.put((String)pairs2.getKey(), (String)pairs2.getValue());
-//                System.out.println((String)pairs2.getKey()+"");
-//                System.out.println((String)pairs2.getValue()+"");
-//            }
-
-            //puts email and 'foo@bar.com'  together in map
-            holder.put(key, m);
-        }
-        return holder;
+    private JSONArray data;
+    public HttpClient client = cWelcome.client;
+    private String response;
+    private Boolean isget;
+    private List<NameValuePair> myPair;
+    @Override
+    protected String doInBackground(String... params) {
+        // TODO Auto-generated method stub
+        if(isget){return GET(params[0]);}
+        else {return POST(params[0]);}
     }
 
     @Override
-    protected String doInBackground(String... params) {
+    protected void onPostExecute(String result) {
+        // Toast.makeText(getBaseContext(),"hasilnya = "+result,Toast.LENGTH_LONG).show();
+        super.onPostExecute(result);
+    }
+
+    public Bridge(Boolean isget) {
+        // TODO Auto-generated constructor stub
+        this.isget=isget;
+    }
+
+    public List<NameValuePair> getMyPair() {
+        return myPair;
+    }
+
+    public void setMyPair(List<NameValuePair> myPair) {
+        this.myPair = myPair;
+    }
+
+    public JSONArray getData() {
+        return data;
+    }
+
+    public void setData(String response) {
         try {
-//                    makeRequest("http://relieve-endpoint.herokuapp.com/v0/posts",tes);
-            HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("http://relieve-endpoint.herokuapp.com/v0/users");
-            JSONObject holder = getJsonObjectFromMap(params);
+            this.data = new JSONArray(response);
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+    }
 
-            //passes the results to a string builder/entity
-            StringEntity se = new StringEntity(holder.toString());
+    public String getResponse() {
+        return response;
+    }
 
-            //sets the post request as the resulting string
-            httpPost.setEntity(se);
-            //sets a request header so the page receving the request
-            //will know what to do with it
-            httpPost.setHeader("Accept", "application/json");
-            httpPost.setHeader("Content-type", "application/json");
-            HttpResponse response = httpClient.execute(httpPost);
+    public void setResponse(String response) {
+        this.response = response;
+    }
+
+    public String GET(String url) {
+        // TODO Auto-generated method stub
+        String result = "";
+        try {
+            HttpResponse response = client.execute(new HttpGet(url));
+            result=getHttpResponse(response);
+        } catch (Exception e) {
+            Log.d("error", "error:" + e);
+            Log.d("error", "result:" + result);
+        }
+        return result;
+    }
+
+    public String POST(String url) {
+        // TODO Auto-generated method stub
+        String result = "";
+        try {
+            HttpPost httpPost = new HttpPost(url);
+            httpPost.setEntity(new UrlEncodedFormEntity(myPair));
+            HttpResponse response = client.execute(httpPost);
+            result=getHttpResponse(response);
 
         } catch (Exception e) {
-            Log.d("error", "error :" + e);
+            Log.d("error", "error:" + e);
         }
-        return null;
+        Log.d("error", "url:" + url);
+        Log.d("error", "result:" + result);
+        return result;
+    }
+    public String getHttpResponse(HttpResponse response){
+        InputStream is = null;
+        String result = "";
+        try {
+            is = response.getEntity().getContent();
+            if (is != null) {
+                BufferedReader reader = new BufferedReader(
+                        new InputStreamReader(is));
+                StringBuilder str = new StringBuilder();
+                String line = null;
+                while ((line = reader.readLine()) != null) {
+                    str.append(line);
+                }
+                is.close();
+                result = str.toString();
+            } else
+                result = "error";
+        } catch (IllegalStateException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return result;
     }
 }

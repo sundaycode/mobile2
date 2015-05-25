@@ -7,10 +7,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-
+import android.content.Intent;
+import android.content.Context;
 
 public class cLogin extends ActionBarActivity {
-
+String idUser="";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,16 +24,27 @@ public class cLogin extends ActionBarActivity {
 //                startActivity(i);
 //            }
 //        });
-        Button go2 = (Button) findViewById(R.id.bUserLogin);
-        go2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(cLogin.this, cSubmitPost.class);
-                startActivity(i);
-            }
-        });
+        tombolLoginUser();
     }
+    public void tombolLoginUser(){
+        final Context context = this;
+        Button user = (Button)findViewById(R.id.bUserLogin);
+        user.setOnClickListener(new View.OnClickListener() {
 
+                                        @Override
+                                        public void onClick(View arg0) {
+                                            // TODO Auto-generated method stub
+                                            Intent intent = new Intent(context,cSubmitPost.class);
+                                            //Bundle jembatan = new Bundle();
+
+                                           //jembatan.putString("idUser", idUser);
+                                           // intent.putExtras(jembatan);
+                                            startActivity(intent);
+
+                                        }}
+        );
+
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
