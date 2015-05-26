@@ -15,9 +15,36 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Give wisdom"
-            android:id="@+id/button4"
+            android:id="@+id/tombolWisdom"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="20dp"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Medium Text"
+            android:id="@+id/jumlahWisdom"
+            android:layout_above="@+id/tombolWisdom"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="WISDOM"
+            android:id="@+id/textView2"
+            android:layout_above="@+id/jumlahWisdom"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="Mr. Bean"
+            android:id="@+id/namaReliver"
+            android:layout_above="@+id/textView2"
             android:layout_centerHorizontal="true" />
     </RelativeLayout>
 

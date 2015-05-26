@@ -31,17 +31,16 @@ String idUser="";
         Button user = (Button)findViewById(R.id.bUserLogin);
         user.setOnClickListener(new View.OnClickListener() {
 
-                                        @Override
-                                        public void onClick(View arg0) {
-                                            // TODO Auto-generated method stub
-                                            Intent intent = new Intent(context,cSubmitPost.class);
-                                            //Bundle jembatan = new Bundle();
+        @Override
+        public void onClick(View arg0) {
+            // TODO Auto-generated method stub
+            Intent intent = new Intent(context,cSubmitPost.class);
+             //Bundle jembatan = new Bundle();
 
-                                           //jembatan.putString("idUser", idUser);
-                                           // intent.putExtras(jembatan);
-                                            startActivity(intent);
-
-                                        }}
+            //jembatan.putString("idUser", idUser);
+           // intent.putExtras(jembatan);
+            startActivity(intent);
+        }}
         );
 
     }

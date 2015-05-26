@@ -18,6 +18,7 @@ public class cListReliever extends ActionBarActivity {
     String[] title;
     String[] isi;
     PostAdapter adapter;
+    String idUser="";
 
     public void inid(ArrayList<Post> x){
 
@@ -27,13 +28,15 @@ public class cListReliever extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_list_reliever);
 
-        listview = (ListView)findViewById(R.id.list_v);
-        Bundle extras = getIntent().getExtras();
-        if(extras!=null)
-        {
-            title = extras.getStringArray("title");
-            isi = extras.getStringArray("isi");
+        Bundle jembatan = getIntent().getExtras();
+        if (jembatan != null) {
+            idUser = jembatan.getString("idUser");
         }
+
+
+
+            listview = (ListView)findViewById(R.id.list_v);
+
 
         int i=0;
         adapter = new PostAdapter(getApplicationContext(), R.layout.post);
