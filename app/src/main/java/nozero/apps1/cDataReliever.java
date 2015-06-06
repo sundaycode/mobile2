@@ -38,10 +38,13 @@ public class cDataReliever extends ActionBarActivity {
     String idUser="11";
     String idReliver="1";
     String[] data;
+    String[] namaReliver;
+    String[] aboutReliver;
 
     Button wisdom;
     TextView jumlahwisdom;
-    TextView namaReliver;
+    TextView namaReliver2;
+    EditText aboutReliver2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +52,7 @@ public class cDataReliever extends ActionBarActivity {
         setContentView(R.layout.a_data_reliever);
         jumlahWisdom(idReliver);
         tombolWisdom();
+        inforeliver(idReliver);
         if(cekWisdom(idUser,idReliver)){
             wisdom.setVisibility(View.INVISIBLE);
         }
@@ -57,7 +61,8 @@ public class cDataReliever extends ActionBarActivity {
 
 
     }
-    public void addWisdom(String iU, String iR){
+    //belooommmmm
+    public void addWisdom(String iU, String iR){ //belom
         String url = "http://endpoint-relieve.sundaycode.co/v0/wisdom";
 
         List<NameValuePair> myPair = new ArrayList<NameValuePair>();
@@ -80,44 +85,9 @@ public class cDataReliever extends ActionBarActivity {
 
 
     }
-    public void getNamaReliver(String iR){
-        namaReliver = (TextView)findViewById(R.id.namaReliver);
-        String nama="";
-        String url = "http://endpoint-relieve.sundaycode.co/v0/wisdom?psikolog_id="+iR+"";
 
-        List<NameValuePair> myPair = new ArrayList<NameValuePair>();
-
-        Bridge move = new Bridge(true);
-        move.setMyPair(myPair);
-
-        try {
-            move.setResponse(move.execute(url).get());
-        } catch (InterruptedException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (ExecutionException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        move.setData(move.getResponse());
-        data = new String[move.getData().length()];
-
-        for (int i = 0; i < move.getData().length(); i++) {
-            JSONObject myData;
-            try {
-                myData = move.getData().getJSONObject(i);
-                data[i] = myData.getString("psikolog_wisdom_point");
-                nama = data[i];
-
-            } catch (JSONException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-        }
-        namaReliver.setText(nama);
-    }
-    public void jumlahWisdom(String iR){
+    public void jumlahWisdom(String iR){ //belum sent get
+        // get
         jumlahwisdom = (TextView)findViewById(R.id.jumlahWisdom);
         String jumlah="0";
         String url = "http://endpoint-relieve.sundaycode.co/v0/wisdom?psikolog_id="+iR+"";
@@ -155,6 +125,50 @@ public class cDataReliever extends ActionBarActivity {
         jumlahwisdom.setText(jumlah);
 
     }
+    public void jumlahWisdom2(String iR){// belom server
+        // set get
+        jumlahwisdom = (TextView)findViewById(R.id.jumlahWisdom);
+        String jumlah="0";
+        String url = "http://endpoint-relieve.sundaycode.co/v0/wisdom";
+
+        List<NameValuePair> myPair = new ArrayList<NameValuePair>();
+        myPair.add(new BasicNameValuePair("psikolog_id", iR));
+
+
+        Bridge move = new Bridge(true);
+        move.setMyPair(myPair);
+        Log.d("error", "result:" + move.toString());
+        try {
+            move.setResponse(move.execute(url).get());
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        move.setData(move.getResponse());
+
+        data = new String[move.getData().length()];
+
+        for (int i = 0; i < move.getData().length(); i++) {
+            JSONObject myData;
+            try {
+                myData = move.getData().getJSONObject(i);
+                data[i] = myData.getString("psikolog_wisdom_point");
+                Toast.makeText(getBaseContext(), data[i], Toast.LENGTH_LONG)
+                        .show();
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+        }
+
+        jumlahwisdom.setText(jumlah);
+
+    }
     public void tombolWisdom(){
         final Context context = this;
         wisdom = (Button)findViewById(R.id.tombolWisdom);
@@ -174,15 +188,19 @@ public class cDataReliever extends ActionBarActivity {
 
     }
 
-    public boolean cekWisdom(String iU, String iR){
+// cekWisdom ok
+    public boolean cekWisdom(String iU, String iR){ //bisa
+        //set get
         boolean hasil=false;
-        String url = "http://endpoint-relieve.sundaycode.co/v0/checkwisdom?psikolog_id="+iR+"&user_id="+iU+"";
+        String url = "http://endpoint-relieve.sundaycode.co/v0/checkwisdom";
 
         List<NameValuePair> myPair = new ArrayList<NameValuePair>();
+        myPair.add(new BasicNameValuePair("psikolog_id", iR));
+        myPair.add(new BasicNameValuePair("user_id", iU));
 
-        Bridge move = new Bridge(true);
+        Bridge move = new Bridge(false);
         move.setMyPair(myPair);
-
+        Log.d("error", "result:" + move.toString());
         try {
             move.setResponse(move.execute(url).get());
         } catch (InterruptedException e) {
@@ -194,6 +212,8 @@ public class cDataReliever extends ActionBarActivity {
         }
 
         move.setData(move.getResponse());
+        Toast.makeText(getBaseContext(),""+move.getData(), Toast.LENGTH_LONG).show();
+        /*
         data = new String[move.getData().length()];
 
         for (int i = 0; i < move.getData().length(); i++) {
@@ -208,8 +228,61 @@ public class cDataReliever extends ActionBarActivity {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+
         }
+*/
         return hasil;
+    }
+
+    public void inforeliver (String iR){ //udah
+        //set get
+        namaReliver2 = (TextView)findViewById(R.id.namaReliver);
+       aboutReliver2 = (EditText)findViewById(R.id.editText4);
+        String nama="";
+        String about="";
+
+        String url = "http://endpoint-relieve.sundaycode.co/v0/reliever?reliever_id="+iR+"";
+        List<NameValuePair> myPair = new ArrayList<NameValuePair>();
+
+        Bridge move = new Bridge(true); move.setMyPair(myPair);
+        try {
+            move.setResponse(move.execute(url).get());
+        } catch (InterruptedException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        move.setData(move.getResponse());
+
+       // Toast.makeText(getBaseContext(),""+move.getData(), Toast.LENGTH_LONG).show();
+
+
+
+        namaReliver = new String[move.getData().length()]; //
+        aboutReliver = new String[move.getData().length()]; //
+
+
+        for (int i = 0; i < move.getData().length(); i++) {
+            JSONObject myData;
+            try {
+                myData = move.getData().getJSONObject(i);
+                namaReliver[i] = myData.getString("reliever_name");
+                nama = namaReliver[i];
+                aboutReliver[i] = myData.getString("reliever_bio");
+                about = aboutReliver[i];
+
+            } catch (JSONException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+
+        }
+        namaReliver2.setText(nama);
+        aboutReliver2.setText(about);
+
     }
 
     @Override

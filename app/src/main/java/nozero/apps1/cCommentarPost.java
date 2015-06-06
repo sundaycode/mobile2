@@ -5,28 +5,48 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ListView;
+import android.widget.TextView;
 
 
 public class cCommentarPost extends ActionBarActivity {
 
     ListView listview;
     String[] nama;
-    String[] isi;
+    String[] komen;
     CommentAdapter adapter;
+    String judul, isi, kategori, postid;
+    TextView JUDUL, ISI, KATEGORI;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.a_commentar_post);
+        Bundle jembatan = getIntent().getExtras();
+        if (jembatan != null) {
+            judul = jembatan.getString("judul");
+            isi = jembatan.getString("isi");
+            kategori = jembatan.getString("kategori");
+            postid = jembatan.getString("postid");
+        }
+
+        JUDUL = (TextView)findViewById(R.id.textView14);
+        ISI = (TextView)findViewById(R.id.tContentPost);
+        KATEGORI = (TextView)findViewById(R.id.textView);
+
+        JUDUL.setText(judul);
+        ISI.setText(isi);
+        KATEGORI.setText(kategori);
+
 
         listview = (ListView)findViewById(R.id.listComment);
         nama = getResources().getStringArray(R.array.nama_komentator);
-        isi = getResources().getStringArray(R.array.isi_komentar);
+        komen = getResources().getStringArray(R.array.isi_komentar);
         int i=0;
         adapter = new CommentAdapter(getApplicationContext(), R.layout.comment);
         listview.setAdapter(adapter);
         for(String relieve : nama){
-            CommentProvider pesan = new CommentProvider(nama[i], isi[i]);
+            CommentProvider pesan = new CommentProvider(nama[i], komen[i]);
             adapter.add(pesan);
             i++;
         }

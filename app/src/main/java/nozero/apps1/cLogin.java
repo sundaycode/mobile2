@@ -34,7 +34,9 @@ String idUser="";
         @Override
         public void onClick(View arg0) {
             // TODO Auto-generated method stub
-            Intent intent = new Intent(context,cSubmitPost.class);
+           // Intent intent = new Intent(context,cSubmitPost.class);
+            Intent intent = new Intent(context,cDataReliever.class);
+            //Intent intent = new Intent(context,cListPost.class);
              //Bundle jembatan = new Bundle();
 
             //jembatan.putString("idUser", idUser);
